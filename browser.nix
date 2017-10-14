@@ -6,17 +6,27 @@
 # to make sure the browser user can write to X
 let
 
-bin = pkgs.writeShellScriptBin "browser" ''
-/var/run/wrappers/bin/sudo -u browser -i ${pkgs.chromium}/bin/chromium $@
-'';
+	bin = pkgs.writeShellScriptBin "browser" ''
+	/var/run/wrappers/bin/sudo -u browser -i ${pkgs.chromium}/bin/chromium $@
+	'';
 
 in {
 
-environment.systemPackages = [ bin pkgs.xorg.xhost ];
+	environment.systemPackages = [ 
+		bin 
+		pkgs.xorg.xhost 
+	];
 
-users.users.browser = {
-	isNormalUser = true;
-	home = "/home/browser";
-};
+	fileSystems = {
+		"/home/browser" = {
+			device = "tmpfs";
+			fsType = "tmpfs";
+		};
+	};
+
+	users.users.browser = {
+		isNormalUser = true;
+		home = "/home/browser";
+	};
 }
 	

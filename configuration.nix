@@ -5,9 +5,15 @@
 	# <nixpkgs/nixos/modules/virtualisation/virtualbox-image.nix> 
 	./browser.nix 
 	./filesystem.nix
+	./steam.nix
 	];
 
 	system.copySystemConfiguration = true;
+ 	nixpkgs.config.allowUnfree = true;
+	programs.bash.enableCompletion = true;
+
+	# automatic mount ~/.Private on login
+	security.pam.enableEcryptfs = true;
 
   	environment.systemPackages = with pkgs ; [ 
 		# stuff
@@ -34,6 +40,12 @@
 		lynx
 		xtrlock-pam
 		mplayer
+		ack
+		thunderbird
+		darktable
+		ecryptfs
+		ecryptfs-helper
+		
 
 		# x11
 		# ---
@@ -49,7 +61,7 @@
 		terminus_font
 		terminus_font_ttf
 		inconsolata
-		xorg.xf86inputsynaptics
+		#xorg.xf86inputsynaptics
 		xorg.xmodmap
 
 		# docker
@@ -75,26 +87,31 @@
 
 
 	services.xserver = {
+		enable = true;
 		windowManager.xmonad = {
 			enable = true;
 			enableContribAndExtras = true;
 		};
-		desktopManager.default = "none";
-		desktopManager.xterm.enable = false;
+		desktopManager = {
+			default = "none";
+			xterm.enable = false;
+		};
 		displayManager.lightdm.enable = true;
-		enable = true;
-		synaptics.enable = true;
-	};
-	fileSystems = {
-		"/home/browser" = {
-			device = "tmpfs";
-			fsType = "tmpfs";
+		
+		# mouse/touchpad
+		# --------------
+		libinput = {
+			enable = true;
+			disableWhileTyping = true;
+			tapping = true;
+			scrollMethod = "twofinger";
 		};
 	};
-	
+
+	programs.vim.defaultEditor = true;
+
 	# user
 	# ---
-	programs.vim.defaultEditor = true;
 	users.mutableUsers = true;
 	users.users.palo = {
 		uid = 1337;
