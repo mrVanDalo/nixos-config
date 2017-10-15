@@ -17,16 +17,15 @@ in {
 		pkgs.xorg.xhost 
 	];
 
-	fileSystems = {
-		"/home/browser" = {
-			device = "tmpfs";
-			fsType = "tmpfs";
-		};
-	};
-
 	users.users.browser = {
 		isNormalUser = true;
 		home = "/home/browser";
+		description = "A servant who opens the browser for me";
+		extraGroups = [ "audio" ];
 	};
+
+	security.sudo.extraConfig = ''
+	palo ALL=(browser) NOPASSWD: ALL
+	'';
 }
 	

@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+	# fix fileSystems.<name>.encrypted - false overwrite
+	# --------------------------------------------------
+	boot.initrd.luks.cryptoModules = [ "aes" "aes_generic" "blowfish" "twofish" "serpent" "cbc" "xts" "lrw" "sha1" "sha256" "sha512" "aes_x86_64" ];
 
 	# lvm volume group
 	# ----------------
@@ -10,19 +13,6 @@
 			device = "/dev/sda2";
 			preLVM = true;
 		}
-#			{
-#				name = "docker_decrypted";
-#				device = "/dev/store/docker";
-#				preLVM = false;
-#				keyFile = "/root/keys/docker.key";	
-#			}
-#			{
-#				name = "development_decrypted";
-#				device = "/dev/store/development";
-#				preLVM = false;
-#				keyFile = "/root/keys/development.key";	
-#			}
-		
 	];
 
 	environment.systemPackages = [
@@ -65,6 +55,13 @@
 		fsType = "ext4";
 	};
 
+	# home/browser
+	# ------------
+	fileSystems."/home/browser" = {
+		device = "tmpfs";
+		fsType = "tmpfs";
+	};
+
 
 	# home/music
 	# ----------
@@ -91,20 +88,33 @@
 	};
 
 	# home/palo/dev
-	# ------------------
-#	fileSystems."/home/palo/dev" = {
-#		options = [ "noatime" "nodiratime" "discard" ];
-#		device = "/dev/store/development_decrypted";
-#		fsType = "ext4";
-#	};
+	# --------------
+ 	fileSystems."/home/palo/dev" = {
+ 		options   = [ "noatime" "nodiratime" ];
+ 		device    = "/dev/mapper/development_decrypted";
+ 		fsType    = "ext4";
+		encrypted = {
+			enable  = true;
+			keyFile = "/mnt-root/root/keys/development.key";	
+			label   = "development_decrypted";
+ 			blkDev  = "/dev/mapper/store-development";
+		};
+ 	};
+
 
 	# var/lib/docker
-	# ------------------
-#	fileSystems."/var/lib/docker" = {
-#		options = [ "noatime" "nodiratime" "discard" ];
-#		device = "/dev/store/docker_decrypted";
-#		fsType = "ext4";
-#	};
+	# --------------
+ 	fileSystems."/var/lib/docker" = {
+ 		options   = [ "noatime" "nodiratime" ];
+ 		device    = "/dev/mapper/docker_decrypted";
+ 		fsType    = "ext4";
+		encrypted = {
+			enable  = true;
+			keyFile = "/mnt-root/root/keys/docker.key";	
+			label   = "docker_decrypted";
+ 			blkDev  = "/dev/mapper/store-docker";
+		};
+ 	};
 
 	# backup
 	# ------

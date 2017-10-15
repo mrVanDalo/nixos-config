@@ -9,8 +9,23 @@
 	];
 
 	system.copySystemConfiguration = true;
+
  	nixpkgs.config.allowUnfree = true;
+
 	programs.bash.enableCompletion = true;
+	
+	sound = { 
+		enable = true;
+		extraConfig = ''
+			defaults.pcm.!cart PCH
+			defaults.pcm.!device 0
+			defaults.pcm.!ctl PCM
+			'';
+	};
+	
+	time.timeZone = "Europe/Berlin"	;
+
+	services.printing.enable = true;
 
 	# automatic mount ~/.Private on login
 	security.pam.enableEcryptfs = true;
@@ -45,7 +60,23 @@
 		darktable
 		ecryptfs
 		ecryptfs-helper
-		
+		dfilemanager
+		blender
+		easytag
+		libreoffice
+		calibre
+		evince
+		feh
+		(bitwig-studio.overrideAttrs (
+			oldAttrs: { 
+			name = "bitwig-studio-1.3.16";
+			src = fetchurl {
+    				url = "https://downloads.bitwig.com/stable/1.3.16/bitwig-studio-1.3.16.deb";
+    				sha256 = "0n0fxh9gnmilwskjcayvjsjfcs3fz9hn00wh7b3gg0cv3qqhich8";
+  				};
+			}
+		))
+
 
 		# x11
 		# ---
@@ -85,6 +116,7 @@
 		
 	];
 
+	services.logind.lidSwitch = "lock";
 
 	services.xserver = {
 		enable = true;
