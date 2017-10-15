@@ -2,26 +2,19 @@
 
 {
 	imports = [ 
-	# <nixpkgs/nixos/modules/virtualisation/virtualbox-image.nix> 
 	./browser.nix 
 	./filesystem.nix
 	./steam.nix
+	./sound.nix
 	];
 
+	# will show the configuration.nix which let to the system
+	# under /run/current-system/configuration.nix
 	system.copySystemConfiguration = true;
 
  	nixpkgs.config.allowUnfree = true;
 
 	programs.bash.enableCompletion = true;
-	
-	sound = { 
-		enable = true;
-		extraConfig = ''
-			defaults.pcm.!cart PCH
-			defaults.pcm.!device 0
-			defaults.pcm.!ctl PCM
-			'';
-	};
 	
 	time.timeZone = "Europe/Berlin"	;
 
@@ -35,8 +28,18 @@
 	security.pam.enableEcryptfs = true;
 
   	environment.systemPackages = with pkgs ; [ 
+		
 		# stuff
 		# ----
+		jetbrains.clion
+		jetbrains.datagrip
+		jetbrains.idea-ultimate
+		jetbrains.pycharm-professional
+		jetbrains.ruby-mine
+		nix-index
+		wgetpaste
+		cmake
+		ncdu
 		vim
 		vimPlugins.vim-nix
 		emacs
