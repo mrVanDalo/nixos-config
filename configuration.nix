@@ -27,6 +27,10 @@
 
 	services.printing.enable = true;
 
+	services.logind.lidSwitch = "lock";
+
+	programs.vim.defaultEditor = true;
+
 	# automatic mount ~/.Private on login
 	security.pam.enableEcryptfs = true;
 
@@ -92,8 +96,9 @@
 		terminus_font
 		terminus_font_ttf
 		inconsolata
-		#xorg.xf86inputsynaptics
 		xorg.xmodmap
+		slack
+		file
 
 		# docker
 		# ------
@@ -103,7 +108,7 @@
 		docker-machine-kvm
 		docker	
 		
-		# netowrk
+		# network
 		# -------
 		wpa_supplicant
 		python27Packages.glances
@@ -113,10 +118,12 @@
 		ipcalc
 		sipcalc
 		openssh
+		wget
+		curl
+		sshfs
 		
 	];
 
-	services.logind.lidSwitch = "lock";
 
 	services.xserver = {
 		enable = true;
@@ -140,7 +147,6 @@
 		};
 	};
 
-	programs.vim.defaultEditor = true;
 
 	# user
 	# ---

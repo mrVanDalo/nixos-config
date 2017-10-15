@@ -25,5 +25,10 @@ in {
 	
 	# for steam
 	hardware.opengl.driSupport32Bit = true;
+
+	security.sudo.extraConfig = ''
+	palo ALL=(steam) NOPASSWD: ALL
+	'';
 }
+	
 	
