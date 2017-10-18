@@ -7,6 +7,7 @@
     ./steam.nix
     ./sound.nix
     ./vim.nix
+    ./font.nix
   ];
 
   # will show the configuration.nix which let to the system
@@ -169,34 +170,6 @@
     isNormalUser = true;
     initialPassword = "palo";
     extraGroups = [ "wheel" "networkmanager" ];
-  };
-
-  # font configuration
-  # ------------------
-  fonts = {
-
-    enableCoreFonts = true;
-    enableFontDir = true;
-    enableGhostscriptFonts = true;
-
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      defaultFonts = {
-        monospace = [ "inconsolata" ];
-      };
-    };
-
-    fonts = with pkgs; [
-      corefonts
-      hasklig
-      inconsolata
-      source-code-pro
-      symbola
-      terminus_font
-      terminus_font_ttf
-      ubuntu_font_family
-    ];
   };
 
 }
