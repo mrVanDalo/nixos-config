@@ -24,6 +24,11 @@
 
   services.logind.lidSwitch = "lock";
 
+
+  # docker
+  # ------
+  virtualisation.docker.enable = true;
+
   # automatic mount 
   # ---------------
   # ~/.Private on login
@@ -169,7 +174,7 @@
     uid = 1337;
     isNormalUser = true;
     initialPassword = "palo";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
   };
 
 }
