@@ -57,13 +57,12 @@
     fsType = "ext4";
   };
 
-  # home/browser
-  # ------------
-  fileSystems."/home/browser" = {
+  # home/browser-tmp
+  # ----------
+  fileSystems."/home/browser-tmp" = {
     device = "tmpfs";
     fsType = "tmpfs";
   };
-
 
   # home/music
   # ----------
