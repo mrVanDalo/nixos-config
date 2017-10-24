@@ -29,6 +29,7 @@
       # shell font
       # ----------
       terminus_font
+      gohufont
     ];
   };
 

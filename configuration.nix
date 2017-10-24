@@ -49,8 +49,15 @@
     # ---------------
     memo
     
+    # backup
+    # ------
+    backup
+    gnupg
+    openssl
+
     # stuff
     # ----
+    hugo
     xclip
     jetbrains.clion
     jetbrains.datagrip
@@ -69,8 +76,8 @@
     tig
     tmux
     #haskellPackages.azubi
+    #haskellPackages.hpodder
     dosfstools
-    backup
     youtube-dl
     pmount
     pass
@@ -140,7 +147,8 @@
     wget
     curl
     sshfs
-    
+    curlftpfs
+    filezilla
   ];
 
 

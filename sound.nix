@@ -2,6 +2,10 @@
 
 {
 
+  environment.systemPackages = [
+    pkgs.jack2Full
+  ];
+
   sound = { 
     enable = true;
     #extraConfig = ''
