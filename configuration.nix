@@ -18,7 +18,8 @@
 
   programs.bash.enableCompletion = true;
   
-  time.timeZone = "Europe/Berlin" ;
+  #time.timeZone = "Europe/Berlin" ;
+  time.timeZone = "America/Santiago" ;
 
   services.printing.enable = true;
 
@@ -51,12 +52,22 @@
     
     # backup
     # ------
+    teamspeak_client
     backup
     gnupg
     openssl
 
     # stuff
     # ----
+    binutils
+    teamspeak_client
+    bc
+    audacity
+    sox
+    aspell
+    aspellDicts.de
+    aspellDicts.en
+    aspellDicts.es
     hugo
     xclip
     jetbrains.clion
@@ -71,7 +82,17 @@
     emacs
     taskwarrior
     tasksh
-    python27Packages.bugwarrior
+    #python27Packages.bugwarrior
+    #(python27Packages.bugwarrior.overrideAttrs (
+    #  oldAttrs: { 
+    #    name = "bugwarrior-1.5.1";
+    #    src = fetchurl {
+    #      url = "mirror://pypi/b/bugwarrior/bugwarrior-1.5.1.tar.gz";
+    #      sha256 = "0kxknjbw5kchd88i577vlzibg8j60r7zzdhbnragj9wg5s3w60xb";
+    #    };
+    #  }
+    #))
+
     git
     tig
     tmux

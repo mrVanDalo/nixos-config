@@ -103,6 +103,24 @@
   };
 
 
+  # home/palo/audio/projects
+  # ------------------
+  fileSystems."/home/palo/audio/projects " = {
+    options = [ "noatime" "nodiratime" "discard" ];
+    device = "/dev/store/audio-projects";
+    fsType = "ext4";
+  };
+
+  # home/palo/audio/samples
+  # ------------------
+  fileSystems."/home/palo/audio/samples" = {
+    options = [ "noatime" "nodiratime" "discard" ];
+    device = "/dev/store/audio-samples";
+    fsType = "ext4";
+  };
+
+
+
   # var/lib/docker
   # --------------
   fileSystems."/var/lib/docker" = {
