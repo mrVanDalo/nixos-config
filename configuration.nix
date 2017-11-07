@@ -8,6 +8,7 @@
     ./sound.nix
     ./vim.nix
     ./font.nix
+    ./udev_devices.nix
   ];
 
   # will show the configuration.nix which let to the system
@@ -59,6 +60,8 @@
 
     # stuff
     # ----
+    zip
+    mixxx
     binutils
     teamspeak_client
     bc
