@@ -13,6 +13,7 @@
     ATTRS{vendor}=="Kindle  ", ATTRS{model}=="Internal Storage", SYMLINK+="kindle%n"
     ATTRS{vendor}=="TOSHIBA ", ATTRS{model}=="External USB 3.0", SYMLINK+="frog%n"
     ATTRS{vendor}=="Toshiba ", ATTRS{model}=="External USB 3.0", SYMLINK+="platin%n"
+    ATTRS{vendor}=="Teenage ", ATTRS{model}=="OP-1            ", SYMLINK+="op1"
   '';
 
 }

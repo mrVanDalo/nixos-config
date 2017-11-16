@@ -27,6 +27,13 @@
 
   services.logind.lidSwitch = "lock";
 
+  # security wrappers 
+  # -----------------
+  # ensure that suid flags are set
+  security.wrappers = {
+    pmount.source = "${pkgs.pmount}/bin/pmount"; 
+    pumount.source = "${pkgs.pmount}/bin/pumount";
+  };
 
   # docker
   # ------
@@ -66,7 +73,9 @@
 
     # stuff
     # ----
+    ffmpeg
     zip
+    unzip
     mixxx
     binutils
     teamspeak_client
@@ -111,7 +120,6 @@
     #haskellPackages.hpodder
     dosfstools
     youtube-dl
-    pmount
     pass
     cups
     elixir
