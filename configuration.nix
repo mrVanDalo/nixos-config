@@ -39,6 +39,16 @@
   # ------
   virtualisation.docker.enable = true;
 
+  # virtualbox
+  # ----------
+  virtualisation.virtualbox = {
+    guest.x11     = true;
+    guest.enable  = true;
+    host.enable   = true;
+  };
+  
+  
+
   # automatic mount 
   # ---------------
   # ~/.Private on login
@@ -73,6 +83,9 @@
 
     # stuff
     # ----
+    nmap-graphical
+    vagrant
+    ansible
     ffmpeg
     zip
     unzip
@@ -169,7 +182,7 @@
     # docker
     # ------
     docker-machine
-    virtualbox
+    #virtualbox
     minikube
     docker-machine-kvm
     docker  
@@ -225,7 +238,7 @@
     uid = 1337;
     isNormalUser = true;
     initialPassword = "palo";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" ];
   };
 
 }
