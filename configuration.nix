@@ -210,16 +210,25 @@
 
   services.xserver = {
     enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-    };
+
     desktopManager = {
       default = "none";
       xterm.enable = false;
     };
+
     displayManager.lightdm.enable = true;
-    
+    displayManager.lightdm.autoLogin = {
+      enable = true;
+      user = "palo";
+    };
+
+    windowManager.default = "xmonad";
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+    };
+
+        
     # mouse/touchpad
     # --------------
     libinput = {
