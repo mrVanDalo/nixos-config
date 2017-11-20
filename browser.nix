@@ -111,6 +111,7 @@ in {
     ( createChromiumBrowser "development" [ "audio" ] )
     ( createChromiumBrowser "tmp"         [ "audio" ] )
     ( createChromiumBrowser "hangout"     [ "audio" "video" ] )
+    ( createChromiumBrowser "screeps"     [ ] )
   ];
 
   

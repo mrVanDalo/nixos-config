@@ -5,6 +5,7 @@
     ./browser.nix 
     ./filesystem.nix
     ./steam.nix
+    ./skype.nix
     ./sound.nix
     ./vim.nix
     ./font.nix
@@ -38,7 +39,12 @@
 
   # network
   # -------
-  networking.wireless.enable = true;
+  networking = {
+    wireless.enable = true;
+    extraHosts = ''
+      # None
+    '';
+  };
   hardware.enableRedistributableFirmware = true;
 
   # load my overlay
@@ -78,6 +84,7 @@
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
     jetbrains.ruby-mine
+    jetbrains.webstorm
     nix-index
     wgetpaste
     cmake
@@ -85,6 +92,7 @@
     emacs
     taskwarrior
     tasksh
+    timewarrior
     #python27Packages.bugwarrior
     #(python27Packages.bugwarrior.overrideAttrs (
     #  oldAttrs: { 
@@ -174,6 +182,9 @@
     curlftpfs
     filezilla
   ];
+
+  
+
 
 
   services.xserver = {
