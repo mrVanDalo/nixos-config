@@ -14,6 +14,7 @@
     ATTRS{vendor}=="TOSHIBA ", ATTRS{model}=="External USB 3.0", SYMLINK+="frog%n"
     ATTRS{vendor}=="Toshiba ", ATTRS{model}=="External USB 3.0", SYMLINK+="platin%n"
     ATTRS{vendor}=="Teenage ", ATTRS{model}=="OP-1            ", SYMLINK+="op1"
+    ATTRS{type}=="SD",         ATTRS{serial}=="0x45b602a3",      SYMLINK+="photo"
   '';
 
 }
