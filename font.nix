@@ -25,7 +25,7 @@
       source-code-pro
       symbola
       ubuntu_font_family
-      
+
       # shell font
       # ----------
       terminus_font

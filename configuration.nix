@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ 
-    ./browser.nix 
+  imports = [
+    ./browser.nix
     ./bash.nix
     ./filesystem.nix
     ./steam.nix
@@ -12,6 +12,7 @@
     ./font.nix
     ./udev_devices.nix
     ./x11.nix
+    ./transmission.nix
   ];
 
   # load my overlay
@@ -23,7 +24,7 @@
   system.copySystemConfiguration = true;
 
   nixpkgs.config.allowUnfree = true;
-  
+
   #time.timeZone = "Europe/Berlin" ;
   time.timeZone = "America/Santiago" ;
 
@@ -31,11 +32,11 @@
 
   services.logind.lidSwitch = "lock";
 
-  # security wrappers 
+  # security wrappers
   # -----------------
   # ensure that suid flags are set
   security.wrappers = {
-    pmount.source  = "${pkgs.pmount}/bin/pmount"; 
+    pmount.source  = "${pkgs.pmount}/bin/pmount";
     pumount.source = "${pkgs.pmount}/bin/pumount";
   };
 
@@ -57,9 +58,7 @@
     };
   };
 
-  
-
-  # automatic mount 
+  # automatic mount
   # ---------------
   # ~/.Private on login
   security.pam.enableEcryptfs = true;
@@ -82,19 +81,19 @@
       uid = 1337;
       isNormalUser = true;
       initialPassword = "palo";
-      extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" ];
+      extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" "transmission" ];
     };
   };
 
 
   # Packages
   # --------
-  environment.systemPackages = with pkgs ; [ 
+  environment.systemPackages = with pkgs ; [
 
     # from my overlay
     # ---------------
     memo
-    
+
     # backup
     # ------
     teamspeak_client
@@ -104,6 +103,7 @@
 
     # stuff
     # ----
+    handbrake
     simplescreenrecorder
     audacious
     slack
@@ -142,7 +142,7 @@
     timewarrior
     #python27Packages.bugwarrior
     #(python27Packages.bugwarrior.overrideAttrs (
-    #  oldAttrs: { 
+    #  oldAttrs: {
     #    name = "bugwarrior-1.5.1";
     #    src = fetchurl {
     #      url = "mirror://pypi/b/bugwarrior/bugwarrior-1.5.1.tar.gz";
@@ -165,6 +165,7 @@
     lynx
     xtrlock-pam
     mplayer
+    vlc
     ack
     ag
     thunderbird
@@ -178,7 +179,7 @@
     calibre
     evince
     (bitwig-studio.overrideAttrs (
-      oldAttrs: { 
+      oldAttrs: {
       name = "bitwig-studio-1.3.16";
       src = fetchurl {
             url = "https://downloads.bitwig.com/stable/1.3.16/bitwig-studio-1.3.16.deb";
@@ -192,8 +193,8 @@
     docker-machine
     minikube
     docker-machine-kvm
-    docker  
-    
+    docker
+
     # network
     # -------
     wpa_supplicant
@@ -210,10 +211,6 @@
     curlftpfs
     filezilla
   ];
-
-  
-
-
 
 }
 

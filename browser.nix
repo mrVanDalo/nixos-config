@@ -27,7 +27,7 @@ let
     ${n}) export BIN=${config.chrome.paths.${n}}/bin/${n}
             ;;
     '';
-  
+
   # firefox
   # -------
   firefox-select = pkgs.writeScriptBin "firefox-select" firefox-select-text;
@@ -73,10 +73,10 @@ let
         palo ALL=(browser-${name}) NOPASSWD: ALL
       '';
 
-      environment.systemPackages = [ 
-        chrome-bin 
-        firefox-bin 
-        pkgs.xorg.xhost 
+      environment.systemPackages = [
+        chrome-bin
+        firefox-bin
+        pkgs.xorg.xhost
       ];
 
     };
@@ -85,25 +85,25 @@ in {
 
   # setup browser-select
   # --------------------
-  options.browser.paths = lib.mkOption { 
-    type = with lib.types; 
-    attrsOf path; 
+  options.browser.paths = lib.mkOption {
+    type = with lib.types;
+    attrsOf path;
   };
-  options.firefox.paths = lib.mkOption { 
-    type = with lib.types; 
-    attrsOf path; 
+  options.firefox.paths = lib.mkOption {
+    type = with lib.types;
+    attrsOf path;
   };
-  options.chrome.paths = lib.mkOption { 
-    type = with lib.types; 
-    attrsOf path; 
+  options.chrome.paths = lib.mkOption {
+    type = with lib.types;
+    attrsOf path;
   };
-  config.environment.systemPackages = [ 
+  config.environment.systemPackages = [
     browser-select
     chrome-select
     firefox-select
   ];
 
-  # create all kinds of browsers  
+  # create all kinds of browsers
   # ----------------------------
   imports = [
     ( createChromiumBrowser "sononym"     [ "audio" ] )
@@ -114,8 +114,5 @@ in {
     ( createChromiumBrowser "screeps"     [ ] )
   ];
 
-  
-
 
 }
-  

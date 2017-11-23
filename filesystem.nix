@@ -19,7 +19,7 @@
   # ------------
   environment.systemPackages = [
     pkgs.ntfs3g
-  ];  
+  ];
 
   # root
   # ----
@@ -96,7 +96,7 @@
     fsType    = "ext4";
     encrypted = {
       enable  = true;
-      keyFile = "/mnt-root/root/keys/development.key";  
+      keyFile = "/mnt-root/root/keys/development.key";
       label   = "development_decrypted";
       blkDev  = "/dev/mapper/store-development";
     };
@@ -129,7 +129,7 @@
     fsType    = "ext4";
     encrypted = {
       enable  = true;
-      keyFile = "/mnt-root/root/keys/docker.key"; 
+      keyFile = "/mnt-root/root/keys/docker.key";
       label   = "docker_decrypted";
       blkDev  = "/dev/mapper/store-docker";
     };
@@ -142,8 +142,6 @@
     device = "/dev/store/backup";
     fsType = "ext4";
   };
-
-
 
 }
 

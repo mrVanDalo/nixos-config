@@ -15,9 +15,9 @@ let
 
 in {
 
-  environment.systemPackages = [ 
-    bin 
-    pkgs.xorg.xhost 
+  environment.systemPackages = [
+    bin
+    pkgs.xorg.xhost
   ];
 
   users.users.${puppet} = {
@@ -26,10 +26,9 @@ in {
     createHome = true;
     extraGroups = [ "audio" "video" ];
   };
-  
+
   security.sudo.extraConfig = ''
   ${master} ALL=(${puppet}) NOPASSWD: ALL
   '';
 }
-  
-  
+

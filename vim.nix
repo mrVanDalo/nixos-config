@@ -13,26 +13,29 @@ let
 
   # the vimrc
   # ---------
-  vimrc = pkgs.writeText "vimrc" '' 
+  vimrc = pkgs.writeText "vimrc" ''
 
-" Map leader is the key for shortcuts
-let mapleader = ","
+    " show Trailing Whitespaces
+    :set list listchars=tab:»·,trail:¶
 
-" move blocks of text in visual mode
-" does not work correctly
-vmap <up> xkP`[V`]
-vmap <down> xp`[V`]
+    " Map leader is the key for shortcuts
+    let mapleader = ","
 
-"always use 'very magic' regexes
-nmap / /\v
+    " move blocks of text in visual mode
+    " does not work correctly
+    vmap <up> xkP`[V`]
+    vmap <down> xp`[V`]
 
-" tabs should always be 2 spaces
-set et ts=2 sts=2 sw=2
+    "always use 'very magic' regexes
+    nmap / /\v
 
-" installed vim-plugins
-set runtimepath=${extra-runtimepath},$VIMRUNTIME
+    " tabs should always be 2 spaces
+    set et ts=2 sts=2 sw=2
 
-'';
+    " installed vim-plugins
+    set runtimepath=${extra-runtimepath},$VIMRUNTIME
+
+  '';
 
 in {
 

@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let 
- 
-  default_asound_config = card: device: 
+let
+
+  default_asound_config = card: device:
     let
       name = "default";
     in {
@@ -17,12 +17,12 @@ let
 
     };
 
-  # create an asound.conf 
+  # create an asound.conf
   # ---------------------
   # for a soundcard as default card
-  usb_asound_config = name: card: device: 
+  usb_asound_config = name: card: device:
 
-    let 
+    let
       add_script = pkgs.writeScriptBin "asound_add_${name}" ''
         #!/usr/bin/env bash
         rm /etc/asound.conf
@@ -45,14 +45,14 @@ let
         '';
       };
 
-      environment.systemPackages = [ 
-        add_script 
-        remove_script 
+      environment.systemPackages = [
+        add_script
+        remove_script
       ];
 
       services.udev.extraRules = ''
         # ${name}
-        # for information : udevadm info -a /dev/sdc 
+        # for information : udevadm info -a /dev/sdc
         ACTION=="add",    SUBSYSTEM=="sound", ATTR{id}=="${card}", RUN+="${add_script}/bin/asound_add_${name}"
         ACTION=="remove", SUBSYSTEM=="sound", ATTR{id}=="${card}", RUN+="${remove_script}/bin/asound_remove_${name}"
       '';
@@ -66,7 +66,7 @@ in {
     pkgs.jack2Full
   ];
 
-  sound = { 
+  sound = {
     enable = true;
     extraConfig = ''
       defaults.pcm.!cart   PCH
@@ -82,4 +82,4 @@ in {
   #];
 
 }
-  
+

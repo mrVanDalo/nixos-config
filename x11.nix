@@ -21,7 +21,7 @@
       xmonad.enable                 = true;
       xmonad.enableContribAndExtras = true;
     };
-        
+
     # mouse/touchpad
     # --------------
     libinput = {
@@ -35,7 +35,7 @@
 
   # Packages
   # --------
-  environment.systemPackages = with pkgs ; [ 
+  environment.systemPackages = with pkgs ; [
 
     haskellPackages.xmobar
     dmenu

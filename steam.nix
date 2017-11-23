@@ -12,9 +12,9 @@ let
 
 in {
 
-  environment.systemPackages = [ 
-    bin 
-    pkgs.xorg.xhost 
+  environment.systemPackages = [
+    bin
+    pkgs.xorg.xhost
   ];
 
   users.users.steam = {
@@ -23,7 +23,7 @@ in {
     createHome = true;
     extraGroups = [ "audio" ];
   };
-  
+
   # for steam
   hardware.opengl.driSupport32Bit = true;
 
@@ -31,5 +31,4 @@ in {
   palo ALL=(steam) NOPASSWD: ALL
   '';
 }
-  
-  
+
