@@ -60,8 +60,8 @@
 
   # automatic mount
   # ---------------
-  # ~/.Private on login
-  security.pam.enableEcryptfs = true;
+  # don't mount ~/.Private on login
+  security.pam.enableEcryptfs = false;
 
   # network
   # -------
@@ -103,6 +103,8 @@
 
     # stuff
     # ----
+    translate-shell
+    lsof
     handbrake
     simplescreenrecorder
     audacious
@@ -155,6 +157,11 @@
     tig
     tmux
     #haskellPackages.hpodder
+    hlint
+    haskellPackages.apply-refact
+    haskellPackages.stylish-haskell
+    haskellPackages.hoogle
+    haskellPackages.hindent
     dosfstools
     youtube-dl
     pass
