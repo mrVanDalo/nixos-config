@@ -103,6 +103,9 @@
 
     # stuff
     # ----
+    imagemagick
+    gimp
+    inkscape
     translate-shell
     lsof
     handbrake

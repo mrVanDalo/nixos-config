@@ -61,6 +61,7 @@
       todo    = "task todo";
       version = "date '+%Y%m%d%H%M%S'";
       vclip   = "xclip -selection clipboard";
+      df      = "df -h";
 
       nix-search = "nix-env -qaP";
       nix-list   = "nix-env -qaP \"*\" --description";
