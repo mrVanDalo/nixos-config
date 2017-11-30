@@ -142,6 +142,7 @@
     cmake
     ncdu
     emacs
+    taskjuggler
     taskwarrior
     tasksh
     timewarrior
