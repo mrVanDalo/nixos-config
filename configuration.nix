@@ -103,6 +103,7 @@
 
     # stuff
     # ----
+    minecraft
     imagemagick
     gimp
     inkscape
