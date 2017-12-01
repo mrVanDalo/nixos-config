@@ -98,6 +98,7 @@
     # ------
     teamspeak_client
     backup
+    gpa
     gnupg
     openssl
 
