@@ -12,7 +12,9 @@
     ./font.nix
     ./udev_devices.nix
     ./x11.nix
+    ./java.nix
     ./transmission.nix
+    ./espeak.nix
   ];
 
   # load my overlay
@@ -81,7 +83,7 @@
       uid = 1337;
       isNormalUser = true;
       initialPassword = "palo";
-      extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" "transmission" ];
+      extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" "transmission" "wireshark" ];
     };
   };
 
@@ -104,6 +106,11 @@
 
     # stuff
     # ----
+    psmisc
+    id3v2
+    copyq
+    espeak
+    espeakedit
     minecraft
     imagemagick
     gimp
