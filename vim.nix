@@ -35,6 +35,9 @@ let
     " installed vim-plugins
     set runtimepath=${extra-runtimepath},$VIMRUNTIME
 
+    " syntax highlighting on
+    syntax on
+
   '';
 
 in {

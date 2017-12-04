@@ -217,6 +217,7 @@
 
     # network
     # -------
+    iftop
     wpa_supplicant
     python27Packages.glances
     traceroute
