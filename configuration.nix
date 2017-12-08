@@ -27,8 +27,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # tzselect
+  # --------
+  # to find out which string to use
   #time.timeZone = "Europe/Berlin" ;
-  time.timeZone = "America/Santiago" ;
+  time.timeZone = "Pacific/Auckland" ;
 
   services.printing.enable = true;
 
@@ -63,7 +66,7 @@
   # automatic mount
   # ---------------
   # don't mount ~/.Private on login
-  security.pam.enableEcryptfs = false;
+  security.pam.enableEcryptfs = true;
 
   # network
   # -------
@@ -106,6 +109,7 @@
 
     # stuff
     # ----
+    xdotool
     psmisc
     id3v2
     copyq
