@@ -30,6 +30,8 @@
       tapping            = true;
       scrollMethod       = "twofinger";
     };
+
+    modules = [ pkgs.xf86_input_wacom ];
   };
 
 

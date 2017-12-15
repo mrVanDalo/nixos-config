@@ -107,8 +107,19 @@
     gnupg
     openssl
 
+    # kdenlive
+    # --------
+    kdeApplications.kdenlive
+    frei0r
+    breeze-icons
+
     # stuff
     # ----
+    freecad
+    krita
+    autoconf
+    libtool
+    scons
     xdotool
     psmisc
     id3v2
@@ -129,7 +140,7 @@
     nmap-graphical
     vagrant
     ansible
-    ffmpeg
+    ffmpeg-full
     zip
     unzip
     mixxx
