@@ -26,8 +26,8 @@ let
     vmap <up> xkP`[V`]
     vmap <down> xp`[V`]
 
-    "always use 'very magic' regexes
-    nmap / /\v
+    " search/grep case insensitive
+    :set ignorecase
 
     " tabs should always be 2 spaces
     set et ts=2 sts=2 sw=2

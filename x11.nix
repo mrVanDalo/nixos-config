@@ -5,6 +5,10 @@
   services.xserver = {
     enable = true;
 
+    # Configure video Drivers
+    # -----------------------
+    videoDrivers = [ "intel" ];
+
     # window-manager : Xmonad
     # -----------------------
     desktopManager = {
@@ -31,6 +35,8 @@
       scrollMethod       = "twofinger";
     };
 
+    # Wacom configuraton
+    # ------------------
     modules = [ pkgs.xf86_input_wacom ];
   };
 
