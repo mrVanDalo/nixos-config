@@ -65,6 +65,7 @@
 
       nix-search = "nix-env -qaP";
       nix-list   = "nix-env -qaP \"*\" --description";
+      nix-find   = "clear ; nix-locate -1 -w";
 
     };
 
