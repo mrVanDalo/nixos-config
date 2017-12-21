@@ -19,7 +19,7 @@
 
   # load my overlay
   # ---------------
-  nixpkgs.config.packageOverrides = import /home/palo/dev/nix-overlay/mrVanDalo-overlay.nix pkgs;
+  nixpkgs.config.packageOverrides = import /home/palo/dev/nixoverlay/mrVanDalo-overlay.nix pkgs;
 
   # will show the configuration.nix which let to the system
   # under /run/current-system/configuration.nix
