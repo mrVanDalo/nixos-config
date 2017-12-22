@@ -33,6 +33,7 @@
       disableWhileTyping = true;
       tapping            = true;
       scrollMethod       = "twofinger";
+      accelSpeed         = "2";
     };
 
     # Wacom configuraton
