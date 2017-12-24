@@ -117,6 +117,9 @@
 
     # stuff
     # ----
+    xboxdrv
+    evtest
+
     nixpkgs-lint
     nix-repl
     nodePackages.node2nix
@@ -242,6 +245,8 @@
     sshfs
     curlftpfs
     filezilla
+    openvpn
+    sshuttle
   ];
 
 }

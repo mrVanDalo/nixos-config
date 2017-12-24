@@ -9,11 +9,27 @@ let
   # browser select
   # --------------
   browser-select = pkgs.writeScriptBin "browser-select" chrome-select-text;
-  browser_paths = chrome-paths;
-  browser_case = chrome-case;
+  browser_paths  = chrome-paths;
+  browser_case   = chrome-case;
 
-  # chrome
-  # ------
+  # google-chrome
+  # -------------
+  google-chrome-select = pkgs.writeScriptBin "google-chrome-select" google-chrome-select-text;
+  google-chrome-select-text = ''
+    BROWSER=$(echo -e "${lib.concatStringsSep "\\n" google-chrome-paths}" | ${pkgs.dmenu}/bin/dmenu)
+    case $BROWSER in
+    ${lib.concatMapStringsSep "\n" google-chrome-case google-chrome-paths}
+    esac
+    $BIN "$@"
+  '';
+  google-chrome-paths = builtins.attrNames config.google-chrome.paths;
+  google-chrome-case = n: ''
+    ${n}) export BIN=${config.google-chrome.paths.${n}}/bin/${n}
+            ;;
+    '';
+
+  # chromium
+  # --------
   chrome-select = pkgs.writeScriptBin "chrome-select" chrome-select-text;
   chrome-select-text = ''
     BROWSER=$(echo -e "${lib.concatStringsSep "\\n" chrome-paths}" | ${pkgs.dmenu}/bin/dmenu)
@@ -46,9 +62,12 @@ let
 
   # create browser
   # --------------
-  createChromiumBrowser = name: groups:
+  createBrowser = name: groups:
     let
 
+      google-chrome-bin = pkgs.writeShellScriptBin "google-chrome-${name}" ''
+        /var/run/wrappers/bin/sudo -u browser-${name} -i ${pkgs.google-chrome}/bin/google-chrome-stable $@
+      '';
       chrome-bin = pkgs.writeShellScriptBin "chrome-${name}" ''
         /var/run/wrappers/bin/sudo -u browser-${name} -i ${pkgs.chromium}/bin/chromium $@
       '';
@@ -66,6 +85,7 @@ let
         createHome = true;
       };
 
+      google-chrome.paths."google-chrome-${name}" = google-chrome-bin;
       chrome.paths."chrome-${name}" = chrome-bin;
       firefox.paths."firefox-${name}" = firefox-bin;
 
@@ -74,6 +94,7 @@ let
       '';
 
       environment.systemPackages = [
+        google-chrome-bin
         chrome-bin
         firefox-bin
         pkgs.xorg.xhost
@@ -97,21 +118,27 @@ in {
     type = with lib.types;
     attrsOf path;
   };
+  options.google-chrome.paths = lib.mkOption {
+    type = with lib.types;
+    attrsOf path;
+  };
   config.environment.systemPackages = [
     browser-select
     chrome-select
+    google-chrome-select
     firefox-select
   ];
 
   # create all kinds of browsers
   # ----------------------------
   imports = [
-    ( createChromiumBrowser "sononym"     [ "audio" ] )
-    ( createChromiumBrowser "facebook"    [ "audio" ] )
-    ( createChromiumBrowser "development" [ "audio" ] )
-    ( createChromiumBrowser "tmp"         [ "audio" ] )
-    ( createChromiumBrowser "hangout"     [ "audio" "video" ] )
-    ( createChromiumBrowser "finance"     [ ] )
+    ( createBrowser "sononym"     [ "audio" ] )
+    ( createBrowser "facebook"    [ "audio" ] )
+    ( createBrowser "development" [ "audio" ] )
+    ( createBrowser "tmp"         [ "audio" ] )
+    ( createBrowser "hangout"     [ "audio" "video" ] )
+    ( createBrowser "netflix"     [ "audio" ] )
+    ( createBrowser "finance"     [ ] )
   ];
 
 
