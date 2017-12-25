@@ -217,10 +217,12 @@
     ecryptfs-helper
     dfilemanager
     blender
-    easytag
     libreoffice
     calibre
     evince
+
+    easytag
+    gnome3.dconf
 
     # docker
     # ------
