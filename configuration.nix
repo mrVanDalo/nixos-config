@@ -120,6 +120,7 @@
     xboxdrv
     evtest
 
+    gpodder
     nixpkgs-lint
     nix-repl
     nodePackages.node2nix
@@ -192,7 +193,6 @@
     git
     tig
     tmux
-    #haskellPackages.hpodder
     hlint
     haskellPackages.apply-refact
     haskellPackages.stylish-haskell

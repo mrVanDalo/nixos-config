@@ -63,9 +63,10 @@
       vclip   = "xclip -selection clipboard";
       df      = "df -h";
 
-      nix-search = "nix-env -qaP";
-      nix-list   = "nix-env -qaP \"*\" --description";
-      nix-find   = "clear ; nix-locate -1 -w";
+      nix-search       = "nix-env -qaP";
+      nix-list         = "nix-env -qaP \"*\" --description";
+      nix-list-haskell = "nix-env -f \"<nixpkgs>\" -qaP -A haskellPackages";
+      nix-find         = "clear ; nix-locate -1 -w";
 
     };
 
