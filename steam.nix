@@ -21,7 +21,7 @@ in {
     isNormalUser = true;
     home = "/home/steam";
     createHome = true;
-    extraGroups = [ "audio" ];
+    extraGroups = [ "audio" "input" ];
   };
 
   # for steam
