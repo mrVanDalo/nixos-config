@@ -27,6 +27,15 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # add virtual midi module
+  # -----------------------
+  # to route midi signals
+  # between bitwig and vcvrack
+  boot.kernelModules = [ "snd_virmidi" ];
+  boot.extraModprobeConfig = ''
+    options snd-virmidi index=-2
+  '';
+
   # tzselect
   # --------
   # to find out which string to use
@@ -100,6 +109,7 @@
     memo
     pencil
     bitwig-studio1
+    vcvrack
 
     # backup
     # ------
