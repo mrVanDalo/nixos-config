@@ -108,7 +108,7 @@
     # ----------
     memo
     pencil
-    bitwig-studio1
+    bitwig-studio
     vcvrack
 
     # backup
