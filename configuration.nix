@@ -180,6 +180,7 @@
     jetbrains.pycharm-professional
     jetbrains.ruby-mine
     jetbrains.webstorm
+    ruby
     nix-index
     wgetpaste
     cmake

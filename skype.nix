@@ -9,11 +9,11 @@ let
   puppet = "skype";
   master = "palo";
   skype = pkgs.skypeforlinux.overrideAttrs(
-            oldAttrs: {
-              name = "skypeforlinux-8.12.76.2";
+            oldAttrs: rec {
+              version = "8.13.76.8";
               src = pkgs.fetchurl {
-                url = "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.12.76.2_amd64.deb";
-                sha256 = "04lz96y5svxnv3hzi23gkfr3cvx8mirc7lb0cdv62diiy7cpi8hb";
+                url = "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${version}_amd64.deb";
+                sha256 = "1vmzzbvwjahqg2rssg17jswl9kpv5x9gwd4mg5mgfhq7y29dyx9x";
               };
             });
 
