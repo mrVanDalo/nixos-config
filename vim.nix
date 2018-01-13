@@ -15,6 +15,10 @@ let
   # ---------
   vimrc = pkgs.writeText "vimrc" ''
 
+    " turn on linenumbers
+    " to turn of :set nonumber
+    :set number
+
     " show Trailing Whitespaces
     :set list listchars=tab:»·,trail:¶
 
