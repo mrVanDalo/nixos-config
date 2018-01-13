@@ -3,18 +3,18 @@
 {
   imports = [
     ./browser.nix
-    ./bash.nix
     ./filesystem.nix
-    ./steam.nix
-    ./skype.nix
-    ./sound.nix
-    ./vim.nix
     ./font.nix
+    ./programs/bash.nix
+    ./programs/espeak.nix
+    ./programs/java.nix
+    ./programs/skype.nix
+    ./programs/steam.nix
+    ./programs/transmission.nix
+    ./programs/vim.nix
+    ./sound.nix
     ./udev_devices.nix
     ./x11.nix
-    ./java.nix
-    ./transmission.nix
-    ./espeak.nix
   ];
 
   # load my overlay
