@@ -10,6 +10,7 @@
     ./programs/java.nix
     ./programs/skype.nix
     ./programs/steam.nix
+    ./programs/slack.nix
     ./programs/transmission.nix
     ./programs/vim.nix
     ./sound.nix
@@ -154,7 +155,6 @@
     handbrake
     simplescreenrecorder
     audacious
-    slack
     file
     nmap-graphical
     vagrant
