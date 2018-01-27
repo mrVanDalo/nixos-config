@@ -34,8 +34,11 @@
   # to route midi signals
   # between bitwig and vcvrack
   boot.kernelModules = [ "snd_virmidi" ];
+  # index=-2  prevents from beeing recognised as the default
+  #           audio device
+  # midi_devs limit the number of midi devices.
   boot.extraModprobeConfig = ''
-    options snd-virmidi index=-2
+    options snd-virmidi index=-2 midi_devs=1
   '';
 
   # tzselect
