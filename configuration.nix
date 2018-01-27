@@ -11,6 +11,7 @@
     ./programs/skype.nix
     ./programs/steam.nix
     ./programs/slack.nix
+    ./programs/netflix.nix
     ./programs/transmission.nix
     ./programs/vim.nix
     ./sound.nix

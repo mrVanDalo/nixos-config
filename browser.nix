@@ -137,7 +137,6 @@ in {
     ( createBrowser "development" [ "audio" ] )
     ( createBrowser "tmp"         [ "audio" ] )
     ( createBrowser "hangout"     [ "audio" "video" ] )
-    ( createBrowser "netflix"     [ "audio" ] )
     ( createBrowser "finance"     [ ] )
   ];
 
