@@ -5,9 +5,10 @@
     ./browser.nix
     ./filesystem.nix
     ./font.nix
+    ./development/java.nix
+    ./development/haskell.nix
     ./programs/bash.nix
     ./programs/espeak.nix
-    ./programs/java.nix
     ./programs/skype.nix
     ./programs/steam.nix
     ./programs/slack.nix
@@ -28,18 +29,6 @@
   system.copySystemConfiguration = true;
 
   nixpkgs.config.allowUnfree = true;
-
-  # add virtual midi module
-  # -----------------------
-  # to route midi signals
-  # between bitwig and vcvrack
-  boot.kernelModules = [ "snd_virmidi" ];
-  # index=-2  prevents from beeing recognised as the default
-  #           audio device
-  # midi_devs limit the number of midi devices.
-  boot.extraModprobeConfig = ''
-    options snd-virmidi index=-2 midi_devs=1
-  '';
 
   # tzselect
   # --------
@@ -118,7 +107,6 @@
 
     # backup
     # ------
-    teamspeak_client
     backup
     gpa
     gnupg
@@ -132,25 +120,15 @@
 
     # stuff
     # ----
-    xboxdrv
+    teamspeak_client
     evtest
-
     gpodder
-    nixpkgs-lint
-    nix-repl
-    nodePackages.node2nix
     freecad
     krita
-    autoconf
     libtool
-    scons
     xdotool
-    psmisc
     id3v2
     copyq
-    espeak
-    espeakedit
-    minecraft
     imagemagick
     gimp
     inkscape
@@ -178,16 +156,15 @@
     aspellDicts.es
     hugo
     xclip
-    jetbrains.clion
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
-    jetbrains.pycharm-professional
-    jetbrains.ruby-mine
-    jetbrains.webstorm
+    #jetbrains.clion
+    #jetbrains.datagrip
+    #jetbrains.pycharm-professional
+    #jetbrains.webstorm
+    #jetbrains.ruby-mine
     ruby
     nix-index
     wgetpaste
-    cmake
+    #cmake
     ncdu
     emacs
     taskjuggler
@@ -205,14 +182,14 @@
     #  }
     #))
 
-    git
-    tig
     tmux
-    hlint
-    haskellPackages.apply-refact
-    haskellPackages.stylish-haskell
-    haskellPackages.hoogle
-    haskellPackages.hindent
+
+    #hlint
+    #haskellPackages.apply-refact
+    #haskellPackages.stylish-haskell
+    #haskellPackages.hoogle
+    #haskellPackages.hindent
+
     dosfstools
     youtube-dl
     pass
@@ -224,20 +201,23 @@
     xtrlock-pam
     mplayer
     vlc
-    ack
-    ag
     thunderbird
     darktable
     ecryptfs
     ecryptfs-helper
     dfilemanager
-    blender
+    #blender
     libreoffice
     calibre
     evince
 
     easytag
     gnome3.dconf
+
+
+    # root tools
+    # ----------
+    psmisc            # contains killall
 
     # docker
     # ------

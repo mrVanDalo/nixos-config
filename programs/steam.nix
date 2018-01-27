@@ -15,6 +15,8 @@ in {
   environment.systemPackages = [
     bin
     pkgs.xorg.xhost
+    # to use xbox controllers
+    pkgs.xboxdrv
   ];
 
   users.users.steam = {
