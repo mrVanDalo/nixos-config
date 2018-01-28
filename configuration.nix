@@ -166,7 +166,7 @@
     lynx
     xtrlock-pam
     thunderbird
-    dfilemanager
+    xfe                 # filemanager
     libreoffice
     calibre
     evince
