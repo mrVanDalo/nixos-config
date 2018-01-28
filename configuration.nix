@@ -5,8 +5,23 @@
     ./browser.nix
     ./filesystem.nix
     ./font.nix
-    ./development/java.nix
+    ./network.nix
+    ./sound.nix
+    ./udev_devices.nix
+    ./x11.nix
+
+    # development
+    # -----------
     ./development/haskell.nix
+    ./development/java.nix
+    ./development/ruby.nix
+    ./development/python.nix
+    ./development/elixir.nix
+    ./development/virtualbox.nix
+    ./development/docker.nix
+
+    # programs
+    # --------
     ./programs/bash.nix
     ./programs/espeak.nix
     ./programs/skype.nix
@@ -15,9 +30,9 @@
     ./programs/netflix.nix
     ./programs/transmission.nix
     ./programs/vim.nix
-    ./sound.nix
-    ./udev_devices.nix
-    ./x11.nix
+    ./programs/kdenlive.nix
+    ./programs/video-tools.nix
+    ./programs/easytag.nix
   ];
 
   # load my overlay
@@ -48,41 +63,14 @@
     pumount.source = "${pkgs.pmount}/bin/pumount";
   };
 
-
-  # Virtualisation
-  # --------------
-  virtualisation = {
-
-    # docker
-    # ------
-    docker.enable = true;
-
-    # virtualbox
-    # ----------
-    virtualbox = {
-      guest.x11     = true;
-      guest.enable  = true;
-      host.enable   = true;
-    };
-  };
-
   # automatic mount
   # ---------------
   # don't mount ~/.Private on login
   security.pam.enableEcryptfs = true;
 
-  # network
-  # -------
-  networking = {
-    wireless.enable = true;
-    extraHosts = ''
-      # None
-    '';
-  };
-  hardware.enableRedistributableFirmware = true;
-
   # user
   # ---
+  # todo make sure the users only get added when 'docker' or vbox is installed.
   users = {
     mutableUsers = true;
     users.palo = {
@@ -112,138 +100,79 @@
     gnupg
     openssl
 
-    # kdenlive
-    # --------
-    kdeApplications.kdenlive
-    frei0r
-    breeze-icons
+    # crypt
+    # -----
+    ecryptfs
+    ecryptfs-helper
+    pass
 
-    # stuff
-    # ----
-    teamspeak_client
-    evtest
-    gpodder
-    freecad
-    krita
-    libtool
-    xdotool
-    id3v2
-    copyq
+    # image programms
+    # ---------------
+    darktable
     imagemagick
+    krita
     gimp
     inkscape
-    translate-shell
-    lsof
-    handbrake
-    simplescreenrecorder
+    blender
+
+    # music tools
+    # -----------
     audacious
-    file
-    nmap-graphical
-    vagrant
-    ansible
-    ffmpeg-full
-    zip
-    unzip
     mixxx
-    binutils
-    teamspeak_client
-    bc
     audacity
     sox
+    id3v2
+
+    # spelling
+    # --------
     aspell
     aspellDicts.de
     aspellDicts.en
     aspellDicts.es
-    hugo
-    xclip
-    #jetbrains.clion
-    #jetbrains.datagrip
-    #jetbrains.pycharm-professional
-    #jetbrains.webstorm
-    #jetbrains.ruby-mine
-    ruby
-    nix-index
-    wgetpaste
-    #cmake
-    ncdu
-    emacs
+    translate-shell
+
+    # time-management
+    # ---------------
     taskjuggler
     taskwarrior
     tasksh
     timewarrior
-    #python27Packages.bugwarrior
-    #(python27Packages.bugwarrior.overrideAttrs (
-    #  oldAttrs: {
-    #    name = "bugwarrior-1.5.1";
-    #    src = fetchurl {
-    #      url = "mirror://pypi/b/bugwarrior/bugwarrior-1.5.1.tar.gz";
-    #      sha256 = "0kxknjbw5kchd88i577vlzibg8j60r7zzdhbnragj9wg5s3w60xb";
-    #    };
-    #  }
-    #))
-
-    tmux
-
-    #hlint
-    #haskellPackages.apply-refact
-    #haskellPackages.stylish-haskell
-    #haskellPackages.hoogle
-    #haskellPackages.hindent
-
-    dosfstools
-    youtube-dl
-    pass
-    cups
-    elixir
-    tree
-    htop
-    lynx
-    xtrlock-pam
-    mplayer
-    vlc
-    thunderbird
-    darktable
-    ecryptfs
-    ecryptfs-helper
-    dfilemanager
-    #blender
-    libreoffice
-    calibre
-    evince
-
-    easytag
-    gnome3.dconf
-
 
     # root tools
     # ----------
-    psmisc            # contains killall
+    psmisc                   # contains killall
+    python27Packages.glances # system monitor
 
-    # docker
-    # ------
-    docker-machine
-    minikube
-    docker-machine-kvm
-    docker
+    # stuff (sort)
+    # ----
+    teamspeak_client
+    gpodder
+    freecad
+    copyq
+    lsof
+    tree
+    file
+    zip unzip
+    bc
+    wgetpaste
+    ncdu
+    emacs
+    hugo
+    xclip
+    tmux
+    dosfstools
+    cups
+    htop
+    lynx
+    xtrlock-pam
+    thunderbird
+    dfilemanager
+    libreoffice
+    calibre
+    evince
+    jetbrains.datagrip  # all the others are in ./development
+    ansible
 
-    # network
-    # -------
-    iftop
-    wpa_supplicant
-    python27Packages.glances
-    traceroute
-    whois
-    wireshark
-    ipcalc
-    sipcalc
-    openssh
-    wget
-    curl
-    sshfs
-    curlftpfs
-    filezilla
-    openvpn
-    sshuttle
   ];
 
 }
