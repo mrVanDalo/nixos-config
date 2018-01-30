@@ -6,7 +6,8 @@
     enable      = true;
     powerOnBoot = true;
     extraConfig = ''
-      AutoConnect=true
+    [General]
+    AutoConnect=true
     '';
   };
 

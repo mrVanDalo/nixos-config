@@ -60,8 +60,9 @@
   # -----------------
   # ensure that suid flags are set
   security.wrappers = {
-    pmount.source  = "${pkgs.pmount}/bin/pmount";
-    pumount.source = "${pkgs.pmount}/bin/pumount";
+    pmount.source   = "${pkgs.pmount}/bin/pmount";
+    pumount.source  = "${pkgs.pmount}/bin/pumount";
+    firejail.source = "${pkgs.firejail}/bin/firejail";
   };
 
   # automatic mount
@@ -147,6 +148,7 @@
     # stuff (sort)
     # ----
     teamspeak_client
+    firejail
     gpodder
     freecad
     copyq

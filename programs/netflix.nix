@@ -1,47 +1,39 @@
 { config, lib, pkgs, ... }:
 
-# slack
-# -------
-# Don't forget to run 'xhost +' with your user
-# to make sure the browser user can write to X
 let
 
-
-  # The binary which is wrapped
-  # ---------------------------
-  binary = "${pkgs.google-chrome}/bin/google-chrome-stable --kiosk https://www.netflix.com/browse";
-
+  # name of the program
+  # -------------------
   program = "netflix";
 
-  # puppet user
-  # -----------
-  puppet = "browser-netflix";
-
-  # user to who can run the puppet using sudo
-  # -----------------------------------------
-  master = "palo";
+  # command that will be firejailed
+  # -------------------------------
+  command = "${pkgs.google-chrome}/bin/google-chrome-stable --kiosk https://www.netflix.com/browse";
 
 
+  # home-folder chroot
+  # ------------------
+  home-folder = "~/.firejail-${program}";
+
+  # the script
+  # ----------
   bin = pkgs.writeShellScriptBin "${program}" ''
-  /var/run/wrappers/bin/sudo --user=${puppet} --login  ${binary} $@
+  if [[ ! -d ${home-folder} ]]
+  then
+    mkdir -p ${home-folder}
+  fi
+
+  /var/run/wrappers/bin/firejail \
+    --private=${home-folder} \
+    ${command}
   '';
 
 in {
 
   environment.systemPackages = [
     bin
-    pkgs.xorg.xhost
+    pkgs.firejail
   ];
 
-  users.users.${puppet} = {
-    isNormalUser = true;
-    home         = "/home/${puppet}";
-    createHome   = true;
-    extraGroups  = [ "audio" ];
-  };
-
-  security.sudo.extraConfig = ''
-  ${master} ALL=(${puppet}) NOPASSWD: ALL
-  '';
 }
 
