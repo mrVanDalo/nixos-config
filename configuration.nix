@@ -25,15 +25,15 @@
     # --------
     ./programs/bash.nix
     ./programs/espeak.nix
-    ./programs/skype.nix
     ./programs/steam.nix
-    ./programs/slack.nix
-    ./programs/netflix.nix
     ./programs/transmission.nix
     ./programs/vim.nix
     ./programs/kdenlive.nix
     ./programs/video-tools.nix
     ./programs/easytag.nix
+    ./programs/skype-firejail.nix
+    ./programs/slack-firejail.nix
+    ./programs/netflix-firejail.nix
   ];
 
   # load my overlay
