@@ -6,7 +6,8 @@
     ./filesystem.nix
     ./font.nix
     ./network.nix
-    ./sound.nix
+    ./sound-pulse.nix
+    ./bluetooth.nix
     ./udev_devices.nix
     ./x11.nix
 
