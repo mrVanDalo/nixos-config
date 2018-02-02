@@ -111,6 +111,7 @@ in {
     ( createBrowserInHome "facebook"    chromium-browser )
     ( createBrowserInHome "development" chromium-browser )
     ( createBrowserInHome "hangout"     google-browser )
+    ( createBrowserInHome "sononym"     chromium-browser)
 
     # RAM browser
     # -----------

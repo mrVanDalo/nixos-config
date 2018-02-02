@@ -13,6 +13,11 @@
     # ---------------------------
     handbrake
     ffmpeg-full
+
+    # video editing
+    # -------------
+    openshot-qt
+
   ];
 }
 

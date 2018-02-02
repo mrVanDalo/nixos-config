@@ -28,7 +28,6 @@
     ./programs/steam.nix
     ./programs/transmission.nix
     ./programs/vim.nix
-    ./programs/kdenlive.nix
     ./programs/video-tools.nix
     ./programs/easytag.nix
     ./programs/skype-firejail.nix
