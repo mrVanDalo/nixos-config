@@ -73,6 +73,10 @@
     };
 
   };
+
+  environment.systemPackages = [
+    pkgs.nix-index
+  ];
 }
 
 
