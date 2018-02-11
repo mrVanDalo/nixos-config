@@ -149,6 +149,7 @@
     teamspeak_client
     firejail
     gpodder
+    freemind
     freecad
     copyq
     lsof
