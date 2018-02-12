@@ -23,7 +23,8 @@
 
     # programs
     # --------
-    ./programs/bash.nix
+    ./programs/shell-bash.nix
+    ./programs/shell-zsh.nix
     ./programs/espeak.nix
     ./programs/steam.nix
     ./programs/transmission.nix
@@ -74,6 +75,7 @@
   # todo make sure the users only get added when 'docker' or vbox is installed.
   users = {
     mutableUsers = true;
+    defaultUserShell = pkgs.zsh;
     users.palo = {
       uid = 1337;
       isNormalUser = true;
@@ -175,6 +177,7 @@
     evince
     jetbrains.datagrip  # all the others are in ./development
     ansible
+    ion
 
   ];
 
