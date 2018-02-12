@@ -5,10 +5,13 @@ let
   # active plugins
   # --------------
   extra-runtimepath = lib.concatMapStringsSep "," (pkg: "${pkg.rtp}") [
-    pkgs.vimPlugins.ack-vim
     pkgs.vimPlugins.Syntastic
-    pkgs.vimPlugins.vim-nix
+    pkgs.vimPlugins.ack-vim
     pkgs.vimPlugins.airline
+    pkgs.vimPlugins.elm-vim
+    pkgs.vimPlugins.rust-vim
+    pkgs.vimPlugins.vim-elixir
+    pkgs.vimPlugins.vim-nix
   ];
 
   # the vimrc

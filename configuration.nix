@@ -15,6 +15,7 @@
     # -----------
     ./development/haskell.nix
     ./development/java.nix
+    ./development/elm.nix
     ./development/ruby.nix
     ./development/python.nix
     ./development/elixir.nix
