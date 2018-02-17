@@ -47,6 +47,8 @@
       vclip   = "xclip -selection clipboard";
       df      = "df -h";
 
+      timestamp = "date +%Y%m%d%H%M%S";
+
       nix-search       = "nix-env -qaP";
       nix-list         = "nix-env -qaP \"*\" --description";
       nix-list-haskell = "nix-env -f \"<nixpkgs>\" -qaP -A haskellPackages";

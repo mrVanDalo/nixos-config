@@ -51,7 +51,7 @@
   # --------
   # to find out which string to use
   #time.timeZone = "Europe/Berlin" ;
-  time.timeZone = "Pacific/Auckland" ;
+  time.timeZone = "Asia/Singapore" ;
 
   services.printing.enable = true;
 
@@ -149,6 +149,7 @@
 
     # stuff (sort)
     # ----
+    scribus
     teamspeak_client
     firejail
     gpodder
