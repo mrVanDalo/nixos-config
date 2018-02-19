@@ -181,6 +181,13 @@
     ansible
     ion
 
+    #(st.override {
+    #  conf = ''
+    #    static char font[] = ":TerminessTTF Nerd Font:pixelsize=17:antialias=true";
+    #  '';
+    #})
+    xst
+
   ];
 
 }
