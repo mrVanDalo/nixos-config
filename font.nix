@@ -11,6 +11,15 @@
     enableGhostscriptFonts = true;
 
     fontconfig = {
+      dpi = 141;
+      subpixel = {
+        lcdfilter = "default";
+        rgba      = "rgb";
+      };
+      hinting = {
+        enable   = true;
+        autohint = false;
+      };
       enable       = true;
       antialias    = true;
       defaultFonts = {
@@ -40,3 +49,5 @@
   };
 
 }
+
+

@@ -41,7 +41,6 @@
     modules = [ pkgs.xf86_input_wacom ];
   };
 
-
   # Packages
   # --------
   environment.systemPackages = with pkgs ; [
@@ -56,5 +55,20 @@
     feh
 
   ];
+
+  # Xresources config
+  # -----------------
+  # spread the Xresource config
+  # across different files
+  # just add a file into `/etc/X11/Xresource.d/` and it will be
+  # evaluated.
+  services.xserver.displayManager.sessionCommands = ''
+    for file in `ls /etc/X11/Xresource.d/`
+    do
+      ${pkgs.xorg.xrdb}/bin/xrdb -merge /etc/X11/Xresource.d/$file
+    done
+  '';
+  environment.etc."/X11/Xresource.d/.keep".text = "";
+
 }
 

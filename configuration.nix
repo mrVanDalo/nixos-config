@@ -31,6 +31,7 @@
     ./programs/transmission.nix
     ./programs/vim.nix
     ./programs/video-tools.nix
+    ./programs/urxvt.nix
     ./programs/easytag.nix
     ./programs/skype-firejail.nix
     ./programs/slack-firejail.nix
