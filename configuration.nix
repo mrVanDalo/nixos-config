@@ -150,6 +150,7 @@
 
     # stuff (sort)
     # ----
+    rsstail
     scribus
     teamspeak_client
     firejail
