@@ -13,6 +13,7 @@
 
     # development
     # -----------
+    ./development/tools.nix
     ./development/haskell.nix
     ./development/java.nix
     ./development/elm.nix
