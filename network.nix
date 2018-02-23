@@ -9,10 +9,29 @@
     '';
   };
 
+  services.openssh = {
+
+    # don't run ssh server
+    # --------------------
+    enable = false;
+
+    # allow only long via ssh-key
+    # ---------------------------
+    passwordAuthentication = false;
+
+    # don't allow to login as root user
+    # ---------------------------------
+    permitRootLogin = "no";
+
+    # don't allow to foward X
+    # -----------------------
+    forwardX11 = false;
+
+  };
+
   # enable for intel wifi drivers
   # -----------------------------
   hardware.enableRedistributableFirmware = true;
-
 
   # Packages
   # --------
