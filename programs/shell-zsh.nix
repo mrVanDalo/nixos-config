@@ -85,7 +85,7 @@
   environment.etc."zshcustom/powerlevel9kpatch.zsh".source = pkgs.writeText "powerlevel9kpatch.zsh" ''
     # only used to make quick config changes
     # --------------------------------------
-    # source /home/palo/.zshrc
+    # source ${config.users.users.mainUser.home}/.zshrc
 
     # this shows all the colors which are available
     # ---------------------------------------------

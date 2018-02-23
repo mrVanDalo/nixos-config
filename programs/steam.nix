@@ -21,16 +21,17 @@ in {
 
   users.users.steam = {
     isNormalUser = true;
-    home = "/home/steam";
-    createHome = true;
-    extraGroups = [ "audio" "input" ];
+    home         = "/home/steam";
+    createHome   = true;
+    extraGroups  = [ "audio" "input" ];
   };
 
   # for steam
+  # ---------
   hardware.opengl.driSupport32Bit = true;
 
   security.sudo.extraConfig = ''
-  palo ALL=(steam) NOPASSWD: ALL
+  ${config.users.extraUsers.mainUser.name} ALL=(steam) NOPASSWD: ALL
   '';
 }
 

@@ -18,7 +18,7 @@
     displayManager.lightdm = {
       enable           = true;
       autoLogin.enable = true;
-      autoLogin.user   = "palo";
+      autoLogin.user   = config.users.users.mainUser.name;
     };
     windowManager = {
       default                       = "xmonad";

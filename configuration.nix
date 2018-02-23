@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./users.nix
     ./browser.nix
     ./filesystem.nix
     ./font.nix
@@ -72,21 +73,6 @@
   # ---------------
   # don't mount ~/.Private on login
   security.pam.enableEcryptfs = true;
-
-  # user
-  # ---
-  # todo make sure the users only get added when 'docker' or vbox is installed.
-  users = {
-    mutableUsers = true;
-    defaultUserShell = pkgs.zsh;
-    users.palo = {
-      uid = 1337;
-      isNormalUser = true;
-      initialPassword = "palo";
-      extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" "transmission" "wireshark" ];
-    };
-  };
-
 
   # Packages
   # --------

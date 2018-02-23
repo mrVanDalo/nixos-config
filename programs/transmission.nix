@@ -18,8 +18,8 @@ in {
       # RPC = UI connection
       rpc-bind-address       = "127.0.0.1";
       rpc-whitelist          = "127.0.0.1";
-      rpc-user               = "palo";
-      rpc-password           = "palo";
+      rpc-user               = config.users.users.mainUser.name;
+      rpc-password           = config.users.users.mainUser.name;
 
       # Start torrents as soon as they are added
       start-added-torrents   = true;

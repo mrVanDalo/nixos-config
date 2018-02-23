@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  mainUserHome = "/home/palo";
+in
 {
   # fix fileSystems.<name>.encrypted - false overwrite
   # --------------------------------------------------
@@ -9,7 +12,7 @@
   # ----------------
   boot.initrd.luks.devices = [
     {
-      name = "vg";
+      name   = "vg";
       device = "/dev/sda2";
       preLVM = true;
     }
@@ -25,8 +28,8 @@
   # ----
   fileSystems."/" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/vg/root";
-    fsType = "ext4";
+    device  = "/dev/vg/root";
+    fsType  = "ext4";
   };
 
   # boot
@@ -36,8 +39,8 @@
     fsType = "ext4";
   };
   boot.loader.grub = {
-    device = "/dev/sda";
-    enable = true;
+    device  = "/dev/sda";
+    enable  = true;
     version = 2;
   };
 
@@ -45,16 +48,16 @@
   # ----
   fileSystems."/home" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/vg/home";
-    fsType = "ext4";
+    device  = "/dev/vg/home";
+    fsType  = "ext4";
   };
 
   # home/steam
   # ----------
   fileSystems."/home/steam" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/steam";
-    fsType = "ext4";
+    device  = "/dev/store/steam";
+    fsType  = "ext4";
   };
 
   # home/browser-tmp
@@ -68,29 +71,29 @@
   # ----------
   fileSystems."/home/music" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/music";
-    fsType = "ext4";
+    device  = "/dev/store/music";
+    fsType  = "ext4";
   };
 
   # home/video
   # ----------
   fileSystems."/home/video" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/video";
-    fsType = "ext4";
+    device  = "/dev/store/video";
+    fsType  = "ext4";
   };
 
-  # home/palo/.Private
+  # $HOME/.Private
   # ------------------
-  fileSystems."/home/palo/.Private" = {
+  fileSystems."${mainUserHome}/.Private" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/private";
-    fsType = "ext4";
+    device  = "/dev/store/private";
+    fsType  = "ext4";
   };
 
-  # home/palo/dev
+  # $HOME/dev
   # --------------
-  fileSystems."/home/palo/dev" = {
+  fileSystems."${mainUserHome}/dev" = {
     options   = [ "noatime" "nodiratime" ];
     device    = "/dev/mapper/development_decrypted";
     fsType    = "ext4";
@@ -102,21 +105,20 @@
     };
   };
 
-
-  # home/palo/audio/projects
+  # $HOME/audio/projects
   # ------------------
-  fileSystems."/home/palo/audio/projects " = {
+  fileSystems."${mainUserHome}/audio/projects " = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/audio-projects";
-    fsType = "ext4";
+    device  = "/dev/store/audio-projects";
+    fsType  = "ext4";
   };
 
-  # home/palo/audio/samples
+  # $HOME/audio/samples
   # ------------------
-  fileSystems."/home/palo/audio/samples" = {
+  fileSystems."${mainUserHome}/audio/samples" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/audio-samples";
-    fsType = "ext4";
+    device  = "/dev/store/audio-samples";
+    fsType  = "ext4";
   };
 
 
@@ -139,8 +141,8 @@
   # ------
   fileSystems."/backup" = {
     options = [ "noatime" "nodiratime" "discard" ];
-    device = "/dev/store/backup";
-    fsType = "ext4";
+    device  = "/dev/store/backup";
+    fsType  = "ext4";
   };
 
 }
