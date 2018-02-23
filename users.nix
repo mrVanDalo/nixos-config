@@ -11,8 +11,10 @@
     defaultUserShell = pkgs.zsh;
 
     users.mainUser = {
-      uid             = 1337;
       isNormalUser    = true;
+      name            = "palo";
+      uid             = 1337;
+      home            = "/home/palo";
       initialPassword = "palo";
       extraGroups     = [ "wheel" "networkmanager" "docker" "vboxusers" "transmission" "wireshark" ];
     };

@@ -3,7 +3,6 @@
 {
   imports = [
     ./users.nix
-    ./browser.nix
     ./filesystem.nix
     ./font.nix
     ./network.nix
@@ -28,6 +27,7 @@
     # --------
     ./programs/shell-bash.nix
     ./programs/shell-zsh.nix
+    ./programs/browser.nix
     ./programs/espeak.nix
     ./programs/steam.nix
     ./programs/transmission.nix
