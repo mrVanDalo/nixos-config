@@ -172,6 +172,7 @@
     ion
     xdotool
     xorg.xev
+    newsbeuter
 
   ];
 

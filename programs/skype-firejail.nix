@@ -8,13 +8,13 @@ let
 
   # command that will be firejailed
   # -------------------------------
-  version = "8.15.76.1";
+version = "8.17.76.1";
   skype = pkgs.skypeforlinux.overrideAttrs(
             oldAttrs: {
               version = version;
               src = pkgs.fetchurl {
                 url = "https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_${version}_amd64.deb";
-                sha256 = "057v646zp5nlkl9a47ybi1x0pqiflnpcw9y11fb0f3bl1qpjkwga";
+                sha256 = "15p6xs195i5xx0gzq8hvrf9pyz5zwn6qvwxiy7kzij8lp5b52grr";
               };
             });
 

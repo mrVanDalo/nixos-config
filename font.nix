@@ -40,6 +40,7 @@
       nerdfonts
       powerline-fonts
       font-awesome-ttf
+      fira-code-symbols
 
       # shell font
       # ----------

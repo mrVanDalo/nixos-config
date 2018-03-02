@@ -60,12 +60,6 @@ in
     fsType  = "ext4";
   };
 
-  # home/browser-tmp
-  # ----------
-  fileSystems."/home/browser-tmp" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
-  };
 
   # home/music
   # ----------
@@ -121,7 +115,12 @@ in
     fsType  = "ext4";
   };
 
-
+  # /home/share
+  # ----------
+  fileSystems."/home/share" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+  };
 
   # var/lib/docker
   # --------------
