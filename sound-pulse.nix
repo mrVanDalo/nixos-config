@@ -21,6 +21,11 @@
     # about testing the plugins check analyseplugin command
     export LADSPA_PATH=${pkgs.ladspaPlugins}/lib/ladspa
   '';
+  programs.zsh.interactiveShellInit = ''
+    # set ladspa library path
+    # about testing the plugins check analyseplugin command
+    export LADSPA_PATH=${pkgs.ladspaPlugins}/lib/ladspa
+  '';
 
   # PulseAudio
   # ----------

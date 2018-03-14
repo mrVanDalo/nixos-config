@@ -54,8 +54,8 @@
   # tzselect
   # --------
   # to find out which string to use
-  #time.timeZone = "Europe/Berlin" ;
-  time.timeZone = "Asia/Singapore" ;
+  time.timeZone = "Europe/Berlin" ;
+  #time.timeZone = "Asia/Singapore" ;
 
   services.printing.enable = true;
 
