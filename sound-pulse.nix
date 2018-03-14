@@ -1,6 +1,54 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+  ladspaPath = "${pkgs.ladspaPlugins}/lib/ladspa";
+
+  # ladspa sink queues
+  # ------------------
+  # generates a chain of effects. Usefull for limiting the output of movies
+  # queue here starts from the audio input and should end at the output
+  #
+  # example for audio -> a -> b -> c -> default_output :
+  #   queue = [ a b c ]
+  #
+  # queue element :
+  # {
+  #   # name of the .so file
+  #   plugin  = "dyson_compress_1403";
+  #   # label of the plugin (must be correct)
+  #   label   = "dysonCompress";
+  #   # control parameters of the plugin
+  #   control = [ "0" "1" "0.2" "0.8"];
+  # }
+  #
+  # have a look at : http://plugin.org.uk/ladspa-swh/docs/ladspa-swh.html
+  ladspaSinkQueues = [
+    {
+      name = "movieLimiterSink";
+      queue = [
+        {
+          plugin  = "dyson_compress_1403";
+          label   = "dysonCompress";
+          control = [
+            "0"    # peak limit (dB)
+            "1"    # release time (secons)
+            "0.2"  # fast compression ration (unknown what that means)
+            "0.8"  # compression ratio
+          ];
+        }
+        {
+          plugin  = "fast_lookahead_limiter_1913";
+          label   = "fastLookaheadLimiter";
+          control = [
+            "20"   # input gain (db)
+            "-10"  # limit (db)
+            "1.1"  # release time (s)
+          ];
+        }
+      ];
+    }
+  ];
+in {
 
   # add virtual midi module
   # -----------------------
@@ -16,15 +64,16 @@
 
   # LADSPA
   # ------
+
   programs.bash.interactiveShellInit = ''
     # set ladspa library path
     # about testing the plugins check analyseplugin command
-    export LADSPA_PATH=${pkgs.ladspaPlugins}/lib/ladspa
+    export LADSPA_PATH=${ladspaPath}
   '';
   programs.zsh.interactiveShellInit = ''
     # set ladspa library path
     # about testing the plugins check analyseplugin command
-    export LADSPA_PATH=${pkgs.ladspaPlugins}/lib/ladspa
+    export LADSPA_PATH=${ladspaPath}
   '';
 
   # PulseAudio
@@ -38,6 +87,22 @@
     extraConfig = ''
       # automatically switch to newly-connected devices
       load-module module-switch-on-connect
+
+      ${builtins.toString (lib.flip map ladspaSinkQueues ( queue : ''
+        # ladspa queue : ${queue.name}
+        ${builtins.toString (lib.flip lib.imap0 (lib.reverseList queue.queue) ( index : config:
+        let
+          sinkName     = suffix : "${queue.name}${builtins.toString suffix}";
+          sinkValue    = "sink_name=${sinkName index}";
+          masterValue  = if (index == 0) then "" else "master=${sinkName (index - 1)}";
+          pluginValue  = "plugin=${ladspaPath}/${config.plugin}";
+          labelValue   = "label=${config.label}";
+          controlValue = "control=${builtins.toString (lib.foldl (a: b: "${a},${b}") (lib.head config.control) (lib.tail config.control))}";
+        in ''
+          # ${sinkName index} : ${config.label}
+          load-module module-ladspa-sink ${sinkValue} ${masterValue} ${pluginValue} ${labelValue} ${controlValue}
+        ''))}
+      '' ))}
     '';
   };
 
