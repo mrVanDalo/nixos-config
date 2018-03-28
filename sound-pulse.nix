@@ -26,6 +26,7 @@ let
     {
       name = "movieLimiterSink";
       queue = [
+        # compress all sounds
         {
           plugin  = "dyson_compress_1403";
           label   = "dysonCompress";
@@ -36,6 +37,7 @@ let
             "0.8"  # compression ratio
           ];
         }
+        # limit sound
         {
           plugin  = "fast_lookahead_limiter_1913";
           label   = "fastLookaheadLimiter";
@@ -43,6 +45,16 @@ let
             "20"   # input gain (db)
             "-10"  # limit (db)
             "1.1"  # release time (s)
+          ];
+        }
+        # avoid deep sounds
+        {
+          plugin  = "dj_eq_1901";
+          label   = "dj_eq";
+          control = [
+            "-9"  # low  gain (db) (100Hz)
+            "0"   # mid  gain (db) (1000Hz)
+            "0"   # high gain (db) (10000Hz)
           ];
         }
       ];
