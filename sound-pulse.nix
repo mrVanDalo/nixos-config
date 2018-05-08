@@ -121,6 +121,11 @@ in {
   # Packages needed
   # ---------------
   environment.systemPackages = with pkgs ; [
+
+    jack2Full
+    qjackctl
+    patchage
+
     # LADSPA
     # ------
     ladspaPlugins
