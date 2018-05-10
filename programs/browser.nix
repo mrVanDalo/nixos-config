@@ -108,10 +108,12 @@ in {
     # top specific browser
     # --------------------
     ( createBrowserInHome "finance"     firefox-browser )
+    ( createBrowserInHome "google"      google-browser )
+    ( createBrowserInHome "sononym"     chromium-browser )
     ( createBrowserInHome "facebook"    chromium-browser )
+    ( createBrowserInHome "shopping"    chromium-browser )
+    ( createBrowserInHome "cbase"       chromium-browser )
     ( createBrowserInHome "development" chromium-browser )
-    ( createBrowserInHome "hangout"     google-browser )
-    ( createBrowserInHome "sononym"     chromium-browser)
 
     # RAM browser
     # -----------

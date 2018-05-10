@@ -122,9 +122,13 @@ in {
   # ---------------
   environment.systemPackages = with pkgs ; [
 
+    # Music making
     jack2Full
     qjackctl
     patchage
+    alsaUtils
+    zynaddsubfx
+
 
     # LADSPA
     # ------

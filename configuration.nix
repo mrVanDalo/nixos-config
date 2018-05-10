@@ -70,11 +70,6 @@
     firejail.source = "${pkgs.firejail}/bin/firejail";
   };
 
-  # automatic mount
-  # ---------------
-  # don't mount ~/.Private on login
-  security.pam.enableEcryptfs = true;
-
   # Packages
   # --------
   environment.systemPackages = with pkgs ; [
@@ -88,15 +83,10 @@
 
     # backup
     # ------
-    backup
+    restic
     gpa
     gnupg
     openssl
-
-    # crypt
-    # -----
-    ecryptfs
-    ecryptfs-helper
     pass
 
     # image programms
@@ -126,7 +116,7 @@
 
     # time-management
     # ---------------
-    taskjuggler
+    #taskjuggler
     taskwarrior
     tasksh
     timewarrior
@@ -172,7 +162,7 @@
     ion
     xdotool
     xorg.xev
-    newsbeuter
+    #newsbeuter
 
   ];
 

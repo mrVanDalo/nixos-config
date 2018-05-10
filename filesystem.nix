@@ -79,10 +79,18 @@ in
 
   # $HOME/.Private
   # ------------------
-  fileSystems."${mainUserHome}/.Private" = {
-    options = [ "noatime" "nodiratime" "discard" ];
-    device  = "/dev/store/private";
-    fsType  = "ext4";
+  fileSystems."${mainUserHome}/private" = {
+
+    options   = [ "noatime" "nodiratime" ];
+    device    = "/dev/mapper/private_decrypted";
+    fsType    = "ext4";
+    encrypted = {
+      enable  = true;
+      keyFile = "/mnt-root/root/keys/private.key";
+      label   = "private_decrypted";
+      blkDev  = "/dev/mapper/store-private";
+    };
+
   };
 
   # $HOME/dev
@@ -99,17 +107,17 @@ in
     };
   };
 
-  # $HOME/audio/projects
+  # $HOME/music-projects
   # ------------------
-  fileSystems."${mainUserHome}/audio/projects " = {
+  fileSystems."${mainUserHome}/music-projects " = {
     options = [ "noatime" "nodiratime" "discard" ];
     device  = "/dev/store/audio-projects";
     fsType  = "ext4";
   };
 
-  # $HOME/audio/samples
+  # $HOME/samples
   # ------------------
-  fileSystems."${mainUserHome}/audio/samples" = {
+  fileSystems."${mainUserHome}/samples" = {
     options = [ "noatime" "nodiratime" "discard" ];
     device  = "/dev/store/audio-samples";
     fsType  = "ext4";
