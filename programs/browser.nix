@@ -107,8 +107,8 @@ in {
 
     # top specific browser
     # --------------------
-    ( createBrowserInHome "finance"     firefox-browser )
     ( createBrowserInHome "google"      google-browser )
+    ( createBrowserInHome "finance"     chromium-browser )
     ( createBrowserInHome "sononym"     chromium-browser )
     ( createBrowserInHome "facebook"    chromium-browser )
     ( createBrowserInHome "shopping"    chromium-browser )
