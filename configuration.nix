@@ -39,6 +39,7 @@
     ./programs/skype-firejail.nix
     ./programs/slack-firejail.nix
     ./programs/netflix-firejail.nix
+    ./programs/curl-scripts.nix
   ];
 
   # load my overlay
