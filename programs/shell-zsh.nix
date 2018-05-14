@@ -16,7 +16,6 @@
       #theme = "agnoster";
       theme = "powerlevel9k/powerlevel9k";
 
-
       plugins = [
         "cabal"
         "docker"
@@ -41,7 +40,9 @@
       ];
     };
 
-
+    loginShellInit = ''
+      export TERM="xterm-256color"
+    '';
     shellAliases = {
       ls      = "ls --color=tty";
       l       = "ls -CFh";

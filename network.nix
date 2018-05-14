@@ -54,7 +54,7 @@
     wireshark
     whois
     traceroute
-    iftop        # show bandwith usage, maybe netsniff-ng has better tools
+    netsniff-ng
 
     # intranet
     # --------
@@ -76,6 +76,33 @@
       sed -e "s/Encryption key:off/open/g" | \
       sed -e "s/ESSID://g" | \
       xargs -L 2 printf "%9s - '%s'\n"
+    '')
+
+    (pkgs.writeShellScriptBin "network-monitor" ''
+      #!/usr/bin/env bash
+
+      tmux start-server
+      tmux new-session -d
+
+      tmux set -g mouse on
+      tmux set -g mouse-select-pane on
+
+      # create a journalctl on the bottom and give it 25%
+      tmux split-window -d -t 0 -v -p 15
+      tmux send-keys    -t 1 "clear ; journalctl -f" enter
+
+      # create a split to see internet trafic
+      tmux split-window -b -t 0 -d -v -p 50
+      tmux send-keys    -t 1 "clear ; ifpps wlp3s0 " enter
+      tmux split-window -b -t 1 -d -h -p 50
+      tmux send-keys    -t 1 "clear ; sudo flowtop" enter
+
+      # create a split to see open ports
+      tmux split-window -b -t 0 -d -h -p 50
+      tmux send-keys    -t 0 "watch netstat -tulpn" enter
+      tmux send-keys    -t 1 "top" enter
+
+      tmux attach
     '')
 
   ];
