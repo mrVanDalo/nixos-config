@@ -7,9 +7,10 @@
     ag
     hlint
     emacs
-    # cabal-install
+    cabal-install
+    cabal2nix
     ghc
-    # haskellPackages.ghc-mod
+    #haskellPackages.ghc-mod
     haskellPackages.apply-refact
     haskellPackages.stylish-haskell
     haskellPackages.hoogle
