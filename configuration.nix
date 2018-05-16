@@ -164,6 +164,7 @@
     xdotool
     xorg.xev
     #newsbeuter
+    pandoc
 
   ];
 
