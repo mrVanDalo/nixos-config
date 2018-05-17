@@ -62,6 +62,10 @@
 
   services.logind.lidSwitch = "lock";
 
+  # to build stuff in sandboxes
+  # ---------------------------
+  nix.useSandbox = true;
+
   # security wrappers
   # -----------------
   # ensure that suid flags are set
