@@ -4,8 +4,9 @@
 
   networking = {
     wireless.enable = true;
+    hostName = "workhorse";
     extraHosts = ''
-      # None
+      # Nothing so far
     '';
   };
 

@@ -5,7 +5,7 @@
     # vpn connections
     # ---------------
     #./vpn/c-base.nix
-    #./vpn/tinc.nix
+    ./vpn/tinc.nix
 
     ./users.nix
     ./filesystem.nix
