@@ -2,6 +2,11 @@
 
 {
   imports = [
+    # vpn connections
+    # ---------------
+    #./vpn/c-base.nix
+    #./vpn/tinc.nix
+
     ./users.nix
     ./filesystem.nix
     ./font.nix
